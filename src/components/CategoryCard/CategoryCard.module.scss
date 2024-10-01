@@ -1,0 +1,25 @@
+.items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+}
+
+.item.active {
+  border: 2px solid rgba(0, 0, 0, 0.572);
+  transition: border-radius 0.3s ease, border-color 0.3s ease;
+  border-radius: 3px;
+}
+
+.item {
+  border: 2px solid rgba(0, 0, 0, 0.13);
+  padding: 7px;
+  transition: border-radius 0.3s ease, border-color 0.3s ease;
+}
+
+.item:hover {
+  cursor: pointer;
+}
