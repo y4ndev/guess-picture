@@ -4,7 +4,7 @@ import { useState } from "react";
 import styles from "./CategoryCard.module.scss";
 
 const CategoryCard = () => {
-  const [activeCategory, setActiveCategory] = useState<number | null>(null);
+  const [activeCategory, setActiveCategory] = useState<number>(1);
 
   const catItems = [
     { name: "Films", id: 1 },
@@ -14,7 +14,7 @@ const CategoryCard = () => {
   ];
 
   const handleClick = (categoryId: number) => {
-    setActiveCategory(categoryId); // Обновляем состояние, указывая активный элемент
+    setActiveCategory(categoryId);
   };
 
   return (
