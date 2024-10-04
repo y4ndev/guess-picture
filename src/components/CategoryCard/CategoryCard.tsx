@@ -1,20 +1,20 @@
 "use client";
+import { ICategory } from "@/types/data";
 import React from "react";
 import { useState } from "react";
 import styles from "./CategoryCard.module.scss";
 
-const CategoryCard = () => {
+interface ICategoryId {
+  onCategoryChange: (category: { id: number; name: string }) => void;
+  catItems: ICategory[];
+}
+
+const CategoryCard: React.FC<ICategoryId> = ({ onCategoryChange, catItems }) => {
   const [activeCategory, setActiveCategory] = useState<number>(1);
 
-  const catItems = [
-    { name: "Films", id: 1 },
-    { name: "Series", id: 2 },
-    { name: "Cartoons", id: 3 },
-    { name: "Games", id: 4 },
-  ];
-
-  const handleClick = (categoryId: number) => {
+  const handleClick = (categoryId: number, categoryName: string) => {
     setActiveCategory(categoryId);
+    onCategoryChange({ id: categoryId, name: categoryName });
   };
 
   return (
@@ -24,7 +24,7 @@ const CategoryCard = () => {
           <li
             className={`${styles.item} ${activeCategory === category.id ? styles.active : ""}`}
             key={category.id}
-            onClick={() => handleClick(category.id)}
+            onClick={() => handleClick(category.id, category.name)}
           >
             {category.name}
           </li>
