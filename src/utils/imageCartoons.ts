@@ -1,10 +1,10 @@
-import cartoon1 from "../assets/images/cartoon/cartoon1.jpg";
-import cartoon2 from "../assets/images/cartoon/cartoon2.jpg";
-import cartoon3 from "../assets/images/cartoon/cartoon3.jpg";
-import cartoon4 from "../assets/images/cartoon/cartoon4.jpg";
-import cartoon5 from "../assets/images/cartoon/cartoon5.jpg";
-import cartoon6 from "../assets/images/cartoon/cartoon6.jpg";
-import cartoon7 from "../assets/images/cartoon/cartoon7.jpg";
+import cartoon1 from "../assets/img/cartoons/cartoon1.webp";
+import cartoon2 from "../assets/img/cartoons/cartoon2.webp";
+import cartoon3 from "../assets/img/cartoons/cartoon3.webp";
+import cartoon4 from "../assets/img/cartoons/cartoon4.webp";
+import cartoon5 from "../assets/img/cartoons/cartoon5.webp";
+import cartoon6 from "../assets/img/cartoons/cartoon6.webp";
+import cartoon7 from "../assets/img/cartoons/cartoon7.webp";
 
 export const cartoons = [
   { id: 1, title: "корпорация монстров", image: cartoon1 },

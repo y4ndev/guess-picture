@@ -1,17 +1,20 @@
 "use client";
 import { useParams } from "next/navigation";
 import { ICategory } from "@/types/data";
+import { cartoons } from "@/utils/imageCartoons";
+import { series } from "@/utils/imageSeries";
+import { films } from "@/utils/imageFilms";
+import { StaticImageData } from "next/image";
 
 interface ICategoryImages extends ICategory {
-  images: string[];
+  images: StaticImageData[];
 }
 
 // Массив категорий с текстовыми заглушками вместо картинок
 const categories: ICategoryImages[] = [
-  { id: 1, name: "Films", images: ["Image 1", "Image 2"] },
-  { id: 2, name: "Series", images: ["Image 1", "Image 2"] },
-  { id: 3, name: "Cartoons", images: ["Image 1", "Image 2"] },
-  { id: 4, name: "Games", images: ["Image 1", "Image 2"] },
+  { id: 1, name: "Films", images: cartoons.map((cartoon) => cartoon.image) },
+  { id: 2, name: "Series", images: cartoons.map((cartoon) => cartoon.image) },
+  { id: 3, name: "Cartoons", images: cartoons.map((cartoon) => cartoon.image) },
 ];
 
 const CategoryPage = () => {
@@ -32,8 +35,8 @@ const CategoryPage = () => {
       <div>
         <h2>Элементы категории:</h2>
         <div>
-          {category.images.map((imageText, index) => (
-            <p key={index}>{imageText}</p> // Текстовые заглушки вместо картинок
+          {category.images.map((imageSrc, index) => (
+            <img key={index} src={imageSrc.src} alt={`Image ${index + 1}`} />
           ))}
         </div>
       </div>

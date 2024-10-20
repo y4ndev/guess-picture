@@ -9,7 +9,6 @@ const categories: ICategory[] = [
   { id: 1, name: "Films" },
   { id: 2, name: "Series" },
   { id: 3, name: "Cartoons" },
-  { id: 4, name: "Games" },
 ];
 
 export default function Home() {
