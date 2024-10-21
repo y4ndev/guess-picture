@@ -1,10 +1,10 @@
-import film1 from "../assets/images/film/film1.jpg";
-import film2 from "../assets/images/film/film2.jpg";
-import film3 from "../assets/images/film/film3.jpg";
-import film4 from "../assets/images/film/film4.jpg";
-import film5 from "../assets/images/film/film5.jpg";
-import film6 from "../assets/images/film/film6.jpg";
-import film7 from "../assets/images/film/film7.jpg";
+import film1 from "../assets/img/films/film1.webp";
+import film2 from "../assets/img/films/film2.webp";
+import film3 from "../assets/img/films/film3.webp";
+import film4 from "../assets/img/films/film4.webp";
+import film5 from "../assets/img/films/film5.webp";
+import film6 from "../assets/img/films/film6.webp";
+import film7 from "../assets/img/films/film7.webp";
 
 export const films = [
   { id: 1, title: "1+1", image: film1 },

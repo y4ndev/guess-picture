@@ -1,10 +1,10 @@
-import series1 from "../assets/images/series/series1.jpg";
-import series2 from "../assets/images/series/series2.jpg";
-import series3 from "../assets/images/series/series3.jpg";
-import series4 from "../assets/images/series/series4.jpg";
-import series5 from "../assets/images/series/series5.jpg";
-import series6 from "../assets/images/series/series6.jpg";
-import series7 from "../assets/images/series/series7.jpg";
+import series1 from "../assets/img/series/series1.webp";
+import series2 from "../assets/img/series/series2.webp";
+import series3 from "../assets/img/series/series3.webp";
+import series4 from "../assets/img/series/series4.webp";
+import series5 from "../assets/img/series/series5.webp";
+import series6 from "../assets/img/series/series6.webp";
+import series7 from "../assets/img/series/series7.webp";
 
 export const series = [
   { id: 1, title: "series 1", image: series1 },

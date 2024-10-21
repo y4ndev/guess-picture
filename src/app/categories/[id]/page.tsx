@@ -5,6 +5,7 @@ import { cartoons } from "@/utils/imageCartoons";
 import { series } from "@/utils/imageSeries";
 import { films } from "@/utils/imageFilms";
 import { StaticImageData } from "next/image";
+import { useState } from "react";
 
 interface ICategoryImages extends ICategory {
   images: StaticImageData[];
@@ -12,8 +13,8 @@ interface ICategoryImages extends ICategory {
 
 // Массив категорий с текстовыми заглушками вместо картинок
 const categories: ICategoryImages[] = [
-  { id: 1, name: "Films", images: cartoons.map((cartoon) => cartoon.image) },
-  { id: 2, name: "Series", images: cartoons.map((cartoon) => cartoon.image) },
+  { id: 1, name: "Films", images: films.map((film) => film.image) },
+  { id: 2, name: "Series", images: series.map((serie) => serie.image) },
   { id: 3, name: "Cartoons", images: cartoons.map((cartoon) => cartoon.image) },
 ];
 
@@ -23,6 +24,12 @@ const CategoryPage = () => {
   // Преобразуем id в число и находим соответствующую категорию
   const categoryId = parseInt(id as string, 10);
   const category = categories.find((cat) => cat.id === categoryId);
+
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const handleNext = () => {
+    
+  }
 
   if (!category) {
     return <div>Категория не найдена</div>; // Если категория не найдена, выводим сообщение
