@@ -4,14 +4,14 @@ import { ICategory } from "@/types/data";
 import { cartoons } from "@/utils/imageCartoons";
 import { series } from "@/utils/imageSeries";
 import { films } from "@/utils/imageFilms";
-import { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
+import { GamePictures } from "@/components/GamePictures/GamePictures";
 
 interface ICategoryImages extends ICategory {
   images: StaticImageData[];
 }
 
-// Массив категорий с текстовыми заглушками вместо картинок
 const categories: ICategoryImages[] = [
   { id: 1, name: "Films", images: films.map((film) => film.image) },
   { id: 2, name: "Series", images: series.map((serie) => serie.image) },
@@ -27,9 +27,7 @@ const CategoryPage = () => {
 
   const [currentImage, setCurrentImage] = useState(0);
 
-  const handleNext = () => {
-    
-  }
+  const handleNext = () => {};
 
   if (!category) {
     return <div>Категория не найдена</div>; // Если категория не найдена, выводим сообщение
@@ -43,7 +41,8 @@ const CategoryPage = () => {
         <h2>Элементы категории:</h2>
         <div>
           {category.images.map((imageSrc, index) => (
-            <img key={index} src={imageSrc.src} alt={`Image ${index + 1}`} />
+            // <Image key={index} src={imageSrc.src} alt={`Image ${index + 1}`} layout="fill" />
+            <GamePictures key={index} src={imageSrc.src} />
           ))}
         </div>
       </div>
