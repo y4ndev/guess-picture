@@ -41,7 +41,7 @@ const CategoryPage = () => {
   const categoryId = parseInt(id as string, 10);
   const category = categories.find((cat) => cat.id === categoryId) || {
     id: 0,
-    name: "Неизвестная категория",
+    name: "404",
     images: [],
     filmId: [],
   };
