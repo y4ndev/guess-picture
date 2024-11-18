@@ -15,4 +15,4 @@ const PlayingField = () => {
   );
 };
 
-export default { PlayingField };
+export { PlayingField };

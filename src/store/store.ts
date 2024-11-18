@@ -1,6 +1,46 @@
 import { create } from "zustand";
+import { cartoons } from "@/utils/imageCartoons";
+import { films } from "@/utils/imageFilms";
+import { series } from "@/utils/imageSeries";
+import { StaticImageData } from "next/image";
 
+interface ICategory {
+  id: number;
+  name: string;
+  images: StaticImageData[];
+  filmId: number[];
+}
 
-const useStore = create((set) => ( {
-    
-}))
+interface ICategoryState {
+  categories: ICategory[];
+  selectedCategory: ICategory | null;
+  setCategories: (categories: ICategory[]) => void;
+  setSelectedCategory: (category: ICategory) => void;
+}
+
+const useCategoryStore = create<ICategoryState>((set) => ({
+  categories: [
+    {
+      id: 1,
+      name: "Films",
+      images: films.map((film) => film.image),
+      filmId: films.map((film) => film.id),
+    },
+    {
+      id: 2,
+      name: "Series",
+      images: series.map((serie) => serie.image),
+      filmId: series.map((serie) => serie.id),
+    },
+    {
+      id: 3,
+      name: "Cartoons",
+      images: cartoons.map((cartoon) => cartoon.image),
+      filmId: cartoons.map((cartoon) => cartoon.id),
+    },
+  ],
+
+  selectedCategory: null,
+  setCategories: (categories) => set({ categories }),
+  setSelectedCategory: (category) => set({ selectedCategory: category }),
+}));
