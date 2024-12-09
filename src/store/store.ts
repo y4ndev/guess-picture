@@ -13,13 +13,13 @@ interface ICategory {
 
 interface ICategoryState {
   categories: ICategory[];
-  selectedCategory: ICategory | null;
+  selectedCategory: ICategory;
   setCategories: (categories: ICategory[]) => void;
   setSelectedCategory: (category: ICategory) => void;
 }
 
-const useCategoryStore = create<ICategoryState>((set) => ({
-  categories: [
+export const useCategoryStore = create<ICategoryState>((set) => {
+  const initialCategories = [
     {
       id: 1,
       name: "Films",
@@ -38,9 +38,12 @@ const useCategoryStore = create<ICategoryState>((set) => ({
       images: cartoons.map((cartoon) => cartoon.image),
       filmId: cartoons.map((cartoon) => cartoon.id),
     },
-  ],
+  ];
 
-  selectedCategory: null,
-  setCategories: (categories) => set({ categories }),
-  setSelectedCategory: (category) => set({ selectedCategory: category }),
-}));
+  return {
+    categories: initialCategories,
+    selectedCategory: initialCategories[0],
+    setCategories: (categories) => set({ categories }),
+    setSelectedCategory: (category) => set({ selectedCategory: category }),
+  };
+});

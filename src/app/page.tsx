@@ -1,21 +1,15 @@
 "use client";
 import { CategoryCard } from "@/components/CategoryCard/CategoryCard";
-import { ICategory } from "@/types/data";
 import Link from "next/link";
-import { useState } from "react";
 import styles from "./page.module.css";
-
-const categories: ICategory[] = [
-  { id: 1, name: "Films" },
-  { id: 2, name: "Series" },
-  { id: 3, name: "Cartoons" },
-];
+import { useCategoryStore } from "@/store/store";
 
 export default function Home() {
-  const [currentCategory, setCurrentCategory] = useState<ICategory>(categories[0]);
+  const { categories, selectedCategory, setSelectedCategory } = useCategoryStore();
 
-  const handleCategoryChange = (category: ICategory) => {
-    setCurrentCategory(category);
+  const handleCategoryChange = (categoryId: number) => {
+    const category = categories.find((cat) => cat.id === categoryId);
+    if (category) setSelectedCategory(category);
   };
 
   return (
@@ -23,9 +17,9 @@ export default function Home() {
       <div className={styles.inner}>
         <h1>Guess-picture</h1>
         <div className={styles.categorys}>
-          <CategoryCard onCategoryChange={handleCategoryChange} catItems={categories} />
+          <CategoryCard onCategoryChange={handleCategoryChange}  />
         </div>
-        <Link href={`/categories/${currentCategory.id}`} passHref>
+        <Link href={`/categories/${selectedCategory.id}`} passHref>
           <button className={styles.btn}>Start</button>
         </Link>
       </div>

@@ -3,28 +3,30 @@ import { ICategory } from "@/types/data";
 import React from "react";
 import { useState } from "react";
 import styles from "./CategoryCard.module.scss";
+import { useCategoryStore } from "@/store/store";
 
 interface ICategoryId {
-  onCategoryChange: (category: { id: number; name: string }) => void;
-  catItems: ICategory[];
+  onCategoryChange: (categoryId: number) => void;
 }
 
-const CategoryCard: React.FC<ICategoryId> = ({ onCategoryChange, catItems }) => {
+const CategoryCard: React.FC<ICategoryId> = ({ onCategoryChange }) => {
   const [activeCategory, setActiveCategory] = useState<number>(1);
 
-  const handleClick = (categoryId: number, categoryName: string) => {
+  const { categories } = useCategoryStore();
+
+  const handleClick = (categoryId: number) => {
     setActiveCategory(categoryId);
-    onCategoryChange({ id: categoryId, name: categoryName });
+    onCategoryChange(categoryId);
   };
 
   return (
     <div className={styles.categorys}>
       <ul className={styles.items}>
-        {catItems.map((category) => (
+        {categories.map((category) => (
           <li
             className={`${styles.item} ${activeCategory === category.id ? styles.active : ""}`}
             key={category.id}
-            onClick={() => handleClick(category.id, category.name)}
+            onClick={() => handleClick(category.id)}
           >
             {category.name}
           </li>
