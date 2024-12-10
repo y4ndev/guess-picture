@@ -1,7 +1,5 @@
 "use client";
-import { ICategory } from "@/types/data";
 import React from "react";
-import { useState } from "react";
 import styles from "./CategoryCard.module.scss";
 import { useCategoryStore } from "@/store/store";
 
@@ -10,9 +8,7 @@ interface ICategoryId {
 }
 
 const CategoryCard: React.FC<ICategoryId> = ({ onCategoryChange }) => {
-  const [activeCategory, setActiveCategory] = useState<number>(1);
-
-  const { categories } = useCategoryStore();
+  const { activeCategory, setActiveCategory, categories } = useCategoryStore();
 
   const handleClick = (categoryId: number) => {
     setActiveCategory(categoryId);

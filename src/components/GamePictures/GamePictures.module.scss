@@ -1,1 +1,11 @@
+.picture {
+  position: relative; /* Необходимо для работы layout="fill" у Next.js Image */
+  width: 450px; /* Ширина контейнера */
+  height: 500px; /* Высота контейнера */
+  overflow: hidden;
+}
 
+.picture img {
+  object-fit: contain; /* Показываем все изображение, добавляя пустые области, если пропорции не совпадают */
+  object-position: center;
+}

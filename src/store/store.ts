@@ -2,19 +2,13 @@ import { create } from "zustand";
 import { cartoons } from "@/utils/imageCartoons";
 import { films } from "@/utils/imageFilms";
 import { series } from "@/utils/imageSeries";
-import { StaticImageData } from "next/image";
-
-interface ICategory {
-  id: number;
-  name: string;
-  images: StaticImageData[];
-  filmId: number[];
-}
+import { ICategory } from "@/types/data";
 
 interface ICategoryState {
   categories: ICategory[];
+  activeCategory: number;
   selectedCategory: ICategory;
-  setCategories: (categories: ICategory[]) => void;
+  setActiveCategory: (categoryId: number) => void;
   setSelectedCategory: (category: ICategory) => void;
 }
 
@@ -43,7 +37,8 @@ export const useCategoryStore = create<ICategoryState>((set) => {
   return {
     categories: initialCategories,
     selectedCategory: initialCategories[0],
-    setCategories: (categories) => set({ categories }),
+    activeCategory: 1,
     setSelectedCategory: (category) => set({ selectedCategory: category }),
+    setActiveCategory: (categoryId) => set({ activeCategory: categoryId }),
   };
 });

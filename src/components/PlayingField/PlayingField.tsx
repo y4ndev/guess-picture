@@ -1,18 +1,17 @@
-import React from "react";
-import { films } from "@/utils/imageFilms";
-import Image from "next/image";
+import React, { useState } from "react";
 
-const PlayingField = () => {
-  return (
-    <div>
-      {films.map((film) => (
-        <div key={film.id}>
-          <h3>{film.title}</h3>
-          <Image src={film.image} alt={film.title} width={300} height={450} />
-        </div>
-      ))}
-    </div>
-  );
+import styles from "./PlayingField.module.scss";
+import { ICategory } from "@/types/data";
+
+interface ICategoryProps {
+  category: ICategory;
+}
+
+const PlayingField: React.FC<ICategoryProps> = ({ category }) => {
+  const [currentImage, setCurrentImage] = useState(0);
+  const [userAnswer, setUserAnswer] = useState("");
+
+  return <div className={styles.field}></div>;
 };
 
 export { PlayingField };
