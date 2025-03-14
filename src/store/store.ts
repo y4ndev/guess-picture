@@ -19,18 +19,21 @@ export const useCategoryStore = create<ICategoryState>((set) => {
       name: "Films",
       images: films.map((film) => film.image),
       filmId: films.map((film) => film.id),
+      title: films.map((film) => film.title),
     },
     {
       id: 2,
       name: "Series",
       images: series.map((serie) => serie.image),
       filmId: series.map((serie) => serie.id),
+      title: series.map((serie) => serie.title),
     },
     {
       id: 3,
       name: "Cartoons",
       images: cartoons.map((cartoon) => cartoon.image),
       filmId: cartoons.map((cartoon) => cartoon.id),
+      title: cartoons.map((cartoon) => cartoon.title),
     },
   ];
 

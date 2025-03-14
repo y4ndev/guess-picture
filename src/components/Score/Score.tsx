@@ -1,7 +1,11 @@
 import React from "react";
 
-const Score = () => {
-  return <div>Score</div>;
+interface IScore {
+  currentScore: number;
+}
+
+const Score: React.FC<IScore> = ({ currentScore }) => {
+  return <div>Score: {currentScore}</div>;
 };
 
 export { Score };

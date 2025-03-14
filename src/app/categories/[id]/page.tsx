@@ -1,9 +1,10 @@
 "use client";
 import { useParams } from "next/navigation";
-import { useState } from "react";
+import { use, useState } from "react";
 import { GamePictures } from "@/components/GamePictures/GamePictures";
 import { useCategoryStore } from "@/store/store";
 import { PlayingField } from "@/components/PlayingField/PlayingField";
+import { Score } from "@/components/Score/Score";
 
 const CategoryPage = () => {
   const { categories } = useCategoryStore();
@@ -15,18 +16,26 @@ const CategoryPage = () => {
     id: 0,
     name: "404",
     images: [],
+    title: [],
     filmId: [],
   };
 
   const [currentImage, setCurrentImage] = useState(0);
   const [userAnswer, setUserAnswer] = useState("");
+  const [currentScore, setCurrentScore] = useState(0);
 
   const handleNext = () => {
-    if (currentImage < category.images.length - 1 && userAnswer.length > 0) {
-      setCurrentImage((prevImage) => prevImage + 1);
-      console.log(category.filmId[currentImage - 1], currentImage);
-    }
-    setUserAnswer("");
+    if (!userAnswer.trim()) return; // Если поле пустое, выходим
+
+    const correctAnswer = category.title[currentImage]?.toLowerCase();
+    const userInput = userAnswer.trim().toLowerCase();
+
+    if (correctAnswer === userInput) setCurrentScore((prev) => prev + 1);
+
+    setCurrentImage((prev) =>
+      prev < category.images.length - 1 ? prev + 1 : category.images.length
+    );
+    setUserAnswer(""); // Очищаем поле ввода
   };
 
   if (!category) {
@@ -39,10 +48,22 @@ const CategoryPage = () => {
 
       <div>
         <h2>Элементы категории:</h2>
-        <PlayingField category={category} />
-        <div>{<GamePictures src={category.images[currentImage]} />}</div>
-        <input value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} type="text" />
-        <button onClick={() => handleNext()}>КНОПОЧКА</button>
+        <PlayingField />
+
+        {currentImage < category.images.length ? (
+          <GamePictures src={category.images[currentImage]} />
+        ) : (
+          <Score currentScore={currentScore} />
+        )}
+
+        {currentImage < category.images.length && (
+          <>
+            <input value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} type="text" />
+            <button onClick={handleNext} disabled={userAnswer.length === 0}>
+              КНОПОЧКА
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

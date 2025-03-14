@@ -8,8 +8,8 @@ import film7 from "../assets/img/films/film7.webp";
 
 export const films = [
   { id: 1, title: "1+1", image: film1 },
-  { id: 2, title: "бойцовский клуб", image: film2 },
-  { id: 3, title: "аватар", image: film3 },
+  { id: 2, title: "аватар", image: film2 },
+  { id: 3, title: "бойцовский клуб", image: film3 },
   { id: 4, title: "зелёная миля", image: film4 },
   { id: 5, title: "интерстеллар", image: film5 },
   { id: 6, title: "нечто", image: film6 },
