@@ -2,7 +2,7 @@
 import { CategoryCard } from "@/components/CategoryCard/CategoryCard";
 import Link from "next/link";
 import styles from "./page.module.css";
-import { useCategoryStore } from "@/store/store";
+import { useCategoryStore } from "@/store/categoryStore";
 
 export default function Home() {
   const { categories, selectedCategory, setSelectedCategory } = useCategoryStore();
@@ -17,7 +17,7 @@ export default function Home() {
       <div className={styles.inner}>
         <h1>Guess-picture</h1>
         <div className={styles.categorys}>
-          <CategoryCard onCategoryChange={handleCategoryChange}  />
+          <CategoryCard onCategoryChange={handleCategoryChange} />
         </div>
         <Link href={`/categories/${selectedCategory.id}`} passHref>
           <button className={styles.btn}>Start</button>

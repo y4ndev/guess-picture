@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import styles from "./CategoryCard.module.scss";
-import { useCategoryStore } from "@/store/store";
+import { useCategoryStore } from "@/store/categoryStore";
 
 interface ICategoryId {
   onCategoryChange: (categoryId: number) => void;

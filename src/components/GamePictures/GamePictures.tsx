@@ -9,7 +9,7 @@ interface IGamePicture {
 const GamePictures: React.FC<IGamePicture> = ({ src }) => {
   return (
     <div className={styles.picture}>
-      <Image alt="gameCard" src={src} fill />
+      <Image alt="gameCard" src={src} fill sizes="(max-width: 500px) 100vw, 500px" />
     </div>
   );
 };
