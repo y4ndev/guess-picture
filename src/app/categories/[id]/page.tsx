@@ -6,7 +6,7 @@ import { GameContent } from "@/components/GameContent/GameContent";
 const CategoryPage = () => {
   const category = useCategory();
   if (!category) {
-    return <div>Категория не найдена</div>; // Если категория не найдена, выводим сообщение
+    return <div>Категория не найдена</div>; 
   }
   console.log("Rendering CategoryPage, category:", category);
 
@@ -14,7 +14,6 @@ const CategoryPage = () => {
     <div>
       <h1>Категория: {category.name}</h1>
       <div>
-        <h2>Элементы категории:</h2>
         <GameContent />
       </div>
     </div>
